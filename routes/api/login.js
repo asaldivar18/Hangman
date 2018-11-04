@@ -71,10 +71,8 @@ router.get('/update/:uid/:score', function(req, res) {
 
     var uid = req.params.uid
     var score = req.params.score
-        //     //Tank.findById(id, function(err, tank) {
 
     User.findById(uid, (err, user) => {
-        //console.log(user)
         if (score > user.score) {
             user.score = score;
         }

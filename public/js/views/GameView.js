@@ -107,7 +107,7 @@ class GameView {
 
                 }
                 this.check()
-                $.get("https://hangmangang.herokuapp.com/login/update/" + User.uid + "/" + User.score)
+                $.get("/api/login/update/" + User.uid + "/" + User.score)
 
                 target.disabled = true;
 
