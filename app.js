@@ -5,6 +5,8 @@ const mongoose = require("mongoose")
 const users = require("./routes/api/login")
 const bodyParser = require('body-parser')
 var session = require('express-session')
+var http = require("http").Server(app);
+
 
 
 
@@ -41,7 +43,6 @@ mongoose.connect(db, { useNewUrlParser: true })
 app.use('/api/login', users)
 
 
-const port = process.env.PORT || 3000
 
 
 app.get('/', function(req, res) {
@@ -51,4 +52,6 @@ app.get('/invalidpassword', function(req, res) {
     res.sendFile(path.join(__dirname + "/Public/invalidpassword.html"))
 })
 
-app.listen(port, () => console.log('Server started listening on port ' + port))
+http.listen(process.env.PORT || 3000, function() {
+    console.log("Listening on port 3000");
+})
