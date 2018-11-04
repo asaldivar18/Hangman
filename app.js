@@ -39,10 +39,10 @@ app.use('/api/login', users)
 
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, "/index.html"));
+    res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 app.get('/invalidpassword', function(req, res) {
-    res.sendFile(path.join(__dirname, "/invalidpassword.html"))
+    res.sendFile(path.join(__dirname, "/public/invalidpassword.html"))
 })
 
 http.listen(process.env.PORT || 3000, function() {
