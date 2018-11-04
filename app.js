@@ -11,7 +11,6 @@ var http = require("http").Server(app);
 
 
 
-app.use(express.static(__dirname + '/Public'));
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     useNewUrlParser: true
@@ -37,12 +36,13 @@ mongoose.connect(db, { useNewUrlParser: true })
 
 app.use('/api/login', users)
 
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, "/public/index.html"));
+    res.sendFile(path.join(__dirname, "/index.html"));
 });
 app.get('/invalidpassword', function(req, res) {
-    res.sendFile(path.join(__dirname, "/public/invalidpassword.html"))
+    res.sendFile(path.join(__dirname, "/invalidpassword.html"))
 })
 
 http.listen(process.env.PORT || 3000, function() {
