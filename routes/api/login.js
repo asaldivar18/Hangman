@@ -6,7 +6,6 @@ var bodyParser = require('body-parser')
 const User = require('../../public/schemas/User')
 
 
-
 /**
  * Get leaderboard
  */

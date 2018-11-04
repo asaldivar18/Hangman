@@ -5,7 +5,6 @@ var connected = false;
 $(function() {
 
     $.get("/api/login/user", (data, res) => {
-        console.log(data)
         User.uid = data;
         if (data != "noUser") {
             connected = true;

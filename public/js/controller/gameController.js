@@ -43,7 +43,6 @@ class GameController {
                     tr.appendChild(score)
                     table.appendChild(tr)
                 });
-                console.log(data)
             })
         })
         $("#logout").click(a => {

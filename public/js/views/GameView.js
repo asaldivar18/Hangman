@@ -49,7 +49,6 @@ class GameView {
         }
         // Update definition on view
     displayDefinition() {
-        console.log("displaying definition")
         $("#def").html(currentWord.definition)
         var row = document.getElementById("word")
         row.innerHTML = ""
@@ -108,7 +107,7 @@ class GameView {
 
                 }
                 this.check()
-                $.get("/login/update/" + User.uid + "/" + User.score)
+                $.get("https://hangmangang.herokuapp.com/login/update/" + User.uid + "/" + User.score)
 
                 target.disabled = true;
 
