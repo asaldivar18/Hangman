@@ -7,6 +7,8 @@ var User = {
 }
 
 
+
+
 function userReset() {
     User.lives = 7;
     User.guess = ""

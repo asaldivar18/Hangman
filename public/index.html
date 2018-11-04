@@ -19,62 +19,80 @@
             Saldivar Lab 3 Hangman 
         </a>
         <ul class="nav navbar-nav navbar-right">
-            <li class="scoretxt" class="navbar-brand">
-                <a href="#" data-toggle="modal" data-target="#login-modal"><button class="btn btn-default">Login</button></a>
-
+            <li>
+                <button id="logout" class="btn btn-default">Logout</button>
             </li>
         </ul>
 
     </nav>
     <!-- if not logged in -->
-    <section id="login">
-        <div class="loginmodal-container">
-            <h1>Login to Your Account</h1><br>
-            <form method="POST">
-                <input type="email" name="loginuser" placeholder="Email">
-                <input type="password" name="loginpass" placeholder="Password">
-                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-            </form>
+    <section id="authentication">
+        <section id="login">
+            <div class="loginmodal-container">
+                <h1>Login to Your Account</h1><br>
+                <form method="POST" action="api/login/auth">
+                    <input type="email" name="loginuser" required placeholder="Email">
+                    <input type="password" name="loginpass" required placeholder="Password">
+                    <input type="submit" name="login" id="newlogin" class="login loginmodal-submit" value="Login">
+                </form>
 
-            <div class="login-help">
-                <a class="text-center lead" id="regbtn" href="#">Register</a>
+                <div class="login-help">
+                    <a class="text-center lead" id="regbtn" href="#">Register</a>
+                </div>
             </div>
-        </div>
+        </section>
+        <section id="register" style="display:none">
+            <div class="loginmodal-container">
+                <h1>Register Account</h1><br>
+                <form method="POST" action="api/login">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="user" placeholder="Email" required>
+                    <input type="password" name="pass" placeholder="Password" required>
+                    <input type="submit" name="register" id="newreg" class="login loginmodal-submit" value="Register">
+                </form>
+
+                <div class="login-help">
+                    <a class="text-center lead" id="logbtn" href="#">Login</a>
+                </div>
+            </div>
+        </section>
+
     </section>
-    <section id="register" style="display:none">
-        <div class="loginmodal-container">
-            <h1>Register Account</h1><br>
-            <form method="POST" action="/api/login/">
-                <input type="text" name="name" placeholder="Name">
-                <input type="email" name="user" placeholder="Email">
-                <input type="password" name="pass" placeholder="Password">
-                <input type="submit" name="register" class="login loginmodal-submit" value="Register">
-            </form>
+    <!-- leaderboard -->
+    <section id="leaderboard" class="container">
+        <table id="lbtable" class="table table-striped">
+            <tr>
+                <th>Rank</th>
 
-            <div class="login-help">
-                <a class="text-center lead" id="logbtn" href="#">Register</a>
-            </div>
-        </div>
+                <th>Username</th>
+                <th>Score</th>
+            </tr>
+
+        </table>
+        <button id="backgame" class="btn btn-warning">Back to Game</button>
+
     </section>
     <!-- game -->
     <section id="game" class="container-fluid">
 
-        <div class="card" id="main">
+        <div class="card col-md-8" style="margin: auto" id="main">
             <div class="card-header">
                 <div id="plrl" class="alert alert-danger" style="display:none">
                     <h2 id="lmsg">Out of lives!</h2>
                 </div>
                 <div id="plrw" class="alert alert-success" style="display:none">
                     <h2 id="wmsg">Word Complete, Next definition</h2>
-                    <a id="scoretxt"></a>
+                    <a class="scoretxt"></a>
                 </div>
                 <h4 id="def"></h4>
-                <div class="text-center">
-                    <p class="float-left lead" id="lives">Lives: 7</p>
-                    <p class="float-left lead" style="padding-left:20px;" id="scoretxt">Score: 0</p>
+                <div class="row" style="margin:auto;">
+                    <h3 style="padding-left:20px;" id="lives">Lives: 7</h3>
+                    <h3 style="padding-left:20px; color: black;" class="scoretxt">Score: 0</h3>
 
                 </div>
-                <button id="resetButton" class="float-right btn btn-warning">Restart</button>
+                <button id="resetButton" class="btn btn-warning">Restart</button>
+                <button id="lbbtn" class="btn btn-warning">Leaderboards
+                </button>
 
 
             </div>

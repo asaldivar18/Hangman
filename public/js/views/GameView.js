@@ -49,6 +49,7 @@ class GameView {
         }
         // Update definition on view
     displayDefinition() {
+        console.log("displaying definition")
         $("#def").html(currentWord.definition)
         var row = document.getElementById("word")
         row.innerHTML = ""
@@ -76,7 +77,7 @@ class GameView {
 
     // Starts a new game
     resetGame() {
-        this.currentWord = getWord()
+        currentWord = getWord()
         userReset()
         this.displayDefinition();
         this.resetButtons()
@@ -89,7 +90,7 @@ class GameView {
         for (var i = 0; i < alphabet.length; i++) {
             var btn = document.createElement("button")
             btn.innerHTML = alphabet[i]
-            btn.classList.add("btn");
+            btn.classList.add("btn", "keys");
             //        btn.classList.add("btn-primary");
 
             btn.classList.add("keys")
@@ -97,12 +98,7 @@ class GameView {
             btn.addEventListener('click', (a) => {
                 let target = event.target || event.srcElement;
                 var innerHTML = target.innerHTML
-                console.log(innerHTML)
-                console.log(currentWord.word, currentWord.word.includes(innerHTML))
-
                 if (currentWord.word.includes(innerHTML)) {
-
-                    console.log(currentWord)
                     this.addLetter(innerHTML)
                     User.lives = 7;
                     $("#lives").html("Lives: " + User.lives);
@@ -112,7 +108,9 @@ class GameView {
 
                 }
                 this.check()
-                this.disabled = true;
+                $.get("http://localhost:3000/api/login/update/" + User.uid + "/" + User.score)
+
+                target.disabled = true;
 
             });
         }
