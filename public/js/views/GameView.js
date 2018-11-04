@@ -108,7 +108,7 @@ class GameView {
 
                 }
                 this.check()
-                $.get("http://localhost:3000/api/login/update/" + User.uid + "/" + User.score)
+                $.get("/login/update/" + User.uid + "/" + User.score)
 
                 target.disabled = true;
 
