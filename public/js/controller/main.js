@@ -4,7 +4,7 @@
 var connected = false;
 $(function() {
 
-    $.get("http://localhost:3000/api/login/user", (data, res) => {
+    $.get("/api/login/user", (data, res) => {
         console.log(data)
         User.uid = data;
         if (data != "noUser") {

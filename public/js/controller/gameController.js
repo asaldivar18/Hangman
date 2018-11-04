@@ -15,7 +15,7 @@ class GameController {
         $("#lbbtn").click(a => {
             $("#leaderboard").show()
             $("#game").hide();
-            $.get('http://localhost:3000/api/login', (data, res) => {
+            $.get('/api/login', (data, res) => {
                 var i = 1
                 var table = document.getElementById("lbtable")
                 table.innerHTML = ""
@@ -48,7 +48,7 @@ class GameController {
         })
         $("#logout").click(a => {
 
-            $.get("http://localhost:3000/api/login/logout", (req, data) => {}).then(a => {
+            $.get("/api/login/logout", (req, data) => {}).then(a => {
                 location.reload()
             })
 
